@@ -9,14 +9,15 @@ var outer = function(){
 //////////////////PROBLEM 1////////////////////
 
 // Above you're given a function that returns another function which has a closure over the name variable.
-// Invoke outer saving the return value into another variable called 'inner'.
+// Invoke outer saving the return value into another variable called 'inner
 
-// Code Here
+
+var inner = outer();
 
 
 //Once you do that, invoke inner.
 
-  //Code Here
+inner();  //Code Here
 
 
 
@@ -36,8 +37,11 @@ var callFriend = function(){
 // Create a makeCall function that when invoked logs  'Calling Jake at 435-215-9248' in your console.
 
   //Code Here
+var makeCall = function() {
+  console.log('Calling Jake at 435-215-9248');
 
-
+}
+makeCall();
 
 
 
@@ -51,15 +55,19 @@ var callFriend = function(){
   Write a function called makeCounter that makes the following code work properly.
 */
 
-//Code Here
-
-//Uncomment this once you make your function
-//   var count = makeCounter();
-//   count(); // 1
-//   count(); // 2
-//   count(); // 3
-//   count(); // 4
-
+var makeCounter = function () {
+  var counter = 0;
+  function increase() {
+    counter++
+    return counter;
+  }
+  return increase;
+}
+var count = makeCounter();
+count();
+count();
+count();
+count();
 
 
 //////////////////PROBLEM 4////////////////////
@@ -72,18 +80,28 @@ var callFriend = function(){
 // You will need to use the module pattern to achieve this.
 
 function counterFactory(value) {
-
-  // Code here.
-
-
-  return {
+  var num = value
+  function inc() {
+    num++;
+    return num;
   }
+
+  function dec() {
+    num--;
+    return num;
+  }
+
+return {
+  inc: inc,
+  dec: dec
+}
+
 }
 
 
-counter = counterFactory(10);
-
-
+var counter = counterFactory(10);
+counter.inc()
+counter.dec()
 
 
 //////////////////PROBLEM 5////////////////////
@@ -161,7 +179,8 @@ timeOutCounter();
 
 //////////////////PROBLEM 8////////////////////
 
-var funcArray = [];
+var funcArray = [0,1,2,3,4,5];
+
 
 /*
   Make the following code work
